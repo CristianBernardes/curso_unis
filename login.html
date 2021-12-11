@@ -29,16 +29,11 @@
                     <input type="email" id="email" class="form-control" placeholder="fulano@email.com" required
                         autofocus>
                     <input type="password" id="password" class="form-control" placeholder="Senha" required>
-                    <div id="remember" class="checkbox">
-                        <label>
-                            <input type="checkbox" value="remember-me"> Lembre-se de mim
-                        </label>
-                    </div>
-                    <button onclick="checaUsuario()" class="btn btn-lg btn-primary btn-block btn-signin">
+                    <button onclick="checkLogin()" class="btn btn-lg btn-primary btn-block btn-signin">
                         Entrar
                     </button>
                 </form><!-- /form -->
-                <a onclick="mostrarSenha()" class="forgot-password">
+                <a onclick="revealPassword()" class="forgot-password">
                     Esqueceu a senha?
                 </a>
             </div><!-- /card-container -->

@@ -11,12 +11,12 @@ window.onload = function () {
     }
 };
 
-function mostrarSenha() {
+function revealPassword() {
 
     alert('Sua senha é 123456');
 }
 
-function checaUsuario() {
+function checkLogin() {
 
     const email = document.getElementById('email');
 
@@ -28,6 +28,14 @@ function checaUsuario() {
 function login(email, pass) {
 
     if (email === 'admin@admin.com' && pass === '123456') {
+
+        window.localStorage.setItem('token', generateRandomString(150));
+
+        window.localStorage.setItem('usuario_logado', email);
+
+        window.location.href = "index.html";
+
+    } else if (checkExistsUser(email, pass) === true) {
 
         window.localStorage.setItem('token', generateRandomString(150));
 
@@ -54,4 +62,16 @@ function generateRandomString(size) {
     }
 
     return stringAleatoria;
+}
+
+function checkExistsUser(email, password) {
+
+    let users = JSON.parse(localStorage.getItem('users'));
+
+    for (let index = 0; index < users.length; index++) {
+        const element = users[index];
+        if (element.email === email && element.password === password) {
+            return true;
+        }
+    }
 }

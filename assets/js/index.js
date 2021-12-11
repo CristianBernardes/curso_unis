@@ -5,28 +5,38 @@ let tableUsers = document.getElementById('users');
 window.onload = function () {
     init();
     getUsers();
+    checkPermissions();
 };
 
 function init() {
     if (!localStorage.getItem('token')) {
         window.location.href = 'login.html';
-    } else {
-
-        let user = window.localStorage.getItem('usuario_logado');
-
-        if (user.indexOf('admin') === -1) {
-            document.getElementById('cadastrar').remove();
-        }
     }
 }
 
 function getUsers() {
 
-    for (let index = 0; index < users.length; index++) {
+    if (users.length > 0) {
 
-        const element = users[index];
+        for (let index = 0; index < users.length; index++) {
 
-        storeUser(element.name, element.email, element.password, index);
+            const element = users[index];
+
+            storeUser(element.name, element.email, element.password, index);
+        }
+    }
+}
+
+function checkPermissions() {
+    let user = window.localStorage.getItem('usuario_logado');
+
+    if (user.indexOf('admin') === -1) {
+        document.getElementById('cadastrar').remove();
+        let deleteButtons = document.getElementsByClassName('btn-danger');
+
+        for (let index = 0; index < deleteButtons.length; index++) {
+            deleteButtons[index].setAttribute('onclick', `alert('Você não tem permissão para utilizar esta ação')`);
+        }
     }
 }
 
