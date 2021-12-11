@@ -7,6 +7,18 @@ window.onload = function () {
     getUsers();
 };
 
+function init() {
+    if (!localStorage.getItem('token')) {
+        window.location.href = 'login.html';
+    } else {
+
+        let user = window.localStorage.getItem('usuario_logado');
+
+        if (user.indexOf('admin') === -1) {
+            document.getElementById('cadastrar').remove();
+        }
+    }
+}
 
 function getUsers() {
 
@@ -73,19 +85,6 @@ function deleteUser(userId, email) {
     document.getElementById(`user-${userId}`).remove();
 
     window.localStorage.setItem('users', JSON.stringify(users));
-}
-
-function init() {
-    if (!localStorage.getItem('token')) {
-        window.location.href = 'login.html';
-    } else {
-
-        let user = window.localStorage.getItem('usuario_logado');
-
-        if (user.indexOf('admin') === -1) {
-            document.getElementById('cadastrar').remove();
-        }
-    }
 }
 
 function logout() {
