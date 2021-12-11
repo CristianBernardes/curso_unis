@@ -30,8 +30,6 @@ function setUser(name, email, password) {
 
         users.push(user);
 
-        users = [... new Set(users)];
-
         window.localStorage.setItem('users', JSON.stringify(users));
 
         storeUser(user.name, user.email, user.password, users.length - 1);
