@@ -21,4 +21,5 @@ body {
 
 .dropdown-menu a {
     color: #000000 !important;
+    cursor: pointer;
 }

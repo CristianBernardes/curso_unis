@@ -35,7 +35,7 @@
                             Menu
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a id="cadastrar" class="dropdown-item" href="#">
+                            <a id="register-user" class="dropdown-item" data-toggle="modal" data-target="#modalUser">
                                 Cadastrar usuário
                             </a>
                             <a id="sair" class="dropdown-item" onclick="logout()"
@@ -51,6 +51,7 @@
                 </form>
             </div>
         </nav>
+
         <table class="table table-bordered table-light" id="table-user">
             <thead>
                 <tr>
@@ -64,6 +65,39 @@
 
             </tbody>
         </table>
+
+        <div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="modalUserTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar Usuário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Nome</label>
+                            <input type="text" class="form-control" id="name-user" placeholder="Nome do usuário">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Endereço de e-mail</label>
+                            <input type="email" class="form-control" id="email-user" aria-describedby="emailHelp"
+                                placeholder="Digite seu e-mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Senha</label>
+                            <input type="password" class="form-control" id="password-user" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" onclick="setUser()">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- JavaScript (Opcional) -->

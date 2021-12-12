@@ -31,7 +31,7 @@ function checkPermissions() {
     let user = window.localStorage.getItem('usuario_logado');
 
     if (user.indexOf('admin') === -1) {
-        document.getElementById('cadastrar').remove();
+        document.getElementById('register-user').remove();
         let deleteButtons = document.getElementsByClassName('btn-danger');
 
         for (let index = 0; index < deleteButtons.length; index++) {
@@ -40,9 +40,19 @@ function checkPermissions() {
     }
 }
 
-function setUser(name, email, password) {
+function setUser() {
 
-    if (typeof returnIndexArray(email) === 'undefined') {
+    const name = document.getElementById('name-user').value;
+
+    const email = document.getElementById('email-user').value;
+
+    const password = document.getElementById('password-user').value;
+
+    if (name === '' || email === '' || password === '') {
+
+        alert('Necessário preencher todos os campos');
+
+    } else if (typeof returnIndexArray(email) === 'undefined') {
 
         const user = {
             'name': name,
@@ -55,6 +65,8 @@ function setUser(name, email, password) {
         window.localStorage.setItem('users', JSON.stringify(users));
 
         storeUser(user.name, user.email, user.password, users.length - 1);
+
+        $('#modalUser').modal('hide');
 
     } else {
 
