@@ -114,7 +114,9 @@ function deleteUser(userId, email) {
 }
 
 function logout() {
+
     window.localStorage.removeItem('token');
+
     window.location.href = 'login.html';
 }
 
