@@ -11,11 +11,6 @@ window.onload = function () {
     }
 };
 
-function revealPassword() {
-
-    alert('Sua senha é 123456');
-}
-
 function checkLogin() {
 
     const email = document.getElementById('email');
@@ -51,17 +46,17 @@ function login(email, pass) {
 
 function generateRandomString(size) {
 
-    let stringAleatoria = '';
+    let randomString = '';
 
     let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     for (let i = 0; i < size; i++) {
 
-        stringAleatoria += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        randomString += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
 
     }
 
-    return stringAleatoria;
+    return randomString;
 }
 
 function checkExistsUser(email, password) {
