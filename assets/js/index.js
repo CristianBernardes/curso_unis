@@ -42,22 +42,22 @@ function checkPermissions() {
 
 function setUser() {
 
-    const name = document.getElementById('name-user').value;
+    const name = document.getElementById('name-user');
 
-    const email = document.getElementById('email-user').value;
+    const email = document.getElementById('email-user');
 
-    const password = document.getElementById('password-user').value;
+    const password = document.getElementById('password-user');
 
-    if (name === '' || email === '' || password === '') {
+    if (name.value === '' || email.value === '' || password.value === '') {
 
         alert('Necessário preencher todos os campos');
 
     } else if (typeof returnIndexArray(email) === 'undefined') {
 
         const user = {
-            'name': name,
-            'email': email,
-            'password': password
+            'name': name.value,
+            'email': email.value,
+            'password': password.value
         }
 
         users.push(user);
@@ -67,6 +67,10 @@ function setUser() {
         storeUser(user.name, user.email, user.password, users.length - 1);
 
         $('#modalUser').modal('hide');
+
+        name.value = '';
+        email.value = '';
+        password.value = '';
 
     } else {
 
